@@ -105,13 +105,16 @@ function Author() {
         name: yup.string()
             .min(2, 'Title Should be above 5 Characters')
             .max(40, 'Title Should be with 40 Characters')
-            .matches(/^[A-z ]+$/, 'Name does not match the requirement!'),
+            .matches(/^[A-z ]+$/, 'Name does not match the requirement!')
+            .required("Please Enter Author Name"),
         dob: yup.string()
-            .matches(/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/, "Date of Birth does not match the requirement!"),
+            .matches(/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/, "Date of Birth does not match the requirement!")
+            .required("Please Enter DOB"),
         bio: yup.string()
             .min(40, 'Name Should be above 40 Characters')
             .max(250, 'Name Should be with 40 Characters')
-            .matches(/^[A-z ]+$/, 'Bio does not match the requirement!'),
+            .matches(/^[A-z ]+$/, 'Bio does not match the requirement!')
+            .required("Please Enter Biography"),
     });
 
     const authorForm = useFormik({
@@ -150,11 +153,11 @@ function Author() {
             <Modal open={open} onClose={handleClose}>
                 <Box sx={style}>
                     <form onSubmit={authorForm.handleSubmit}>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Name" value={authorForm.values.name} variant="outlined" name='name' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur}/>
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Name" value={authorForm.values.name} variant="outlined" name='name' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur} required/>
                         <Typography color="error">{authorForm.touched.name && authorForm.errors.name?authorForm.errors.name:""}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Date Of Birth" value={authorForm.values.dob} variant="outlined" name='dob' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur} />
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Date Of Birth" value={authorForm.values.dob} variant="outlined" name='dob' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur} required/>
                         <Typography color="error">{authorForm.touched.dob && authorForm.errors.dob?authorForm.errors.dob:""}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Biography" value={authorForm.values.bio} variant="outlined" name='bio' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur} />
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Biography" value={authorForm.values.bio} variant="outlined" name='bio' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur} required/>
                         <Typography color="error">{authorForm.touched.bio && authorForm.errors.bio?authorForm.errors.bio:""}</Typography>
                         <Button variant='contained' type='submit' style={{ width: "350px", margin: "5px" }} color="success">
                             {editMode ? 'Update' : 'Submit'}

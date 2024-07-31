@@ -111,17 +111,21 @@ function Book() {
         title: yup.string()
             .min(5, 'Title Should be above 5 Characters')
             .max(40, 'Title Should be with 40 Characters')
-            .matches(/^(?=.*?[A-z]).+$/, 'Title does not match the requirement!'),
+            .matches(/^(?=.*?[A-z]).+$/, 'Title does not match the requirement!')
+            .required("Please Enter Book Title"),
         author: yup.string()
             .min(2, 'Name Should be above 2 Characters')
             .max(40, 'Name Should be with 40 Characters')
-            .matches(/^[A-z ]+$/, 'Author Name does not match the requirement!'),
+            .matches(/^[A-z ]+$/, 'Author Name does not match the requirement!')
+            .required("Please Enter Author Name"),
         iSBN: yup.string()
             .min(5, 'iSBN number should be above 5 digits')
             .max(40, 'iSBN number should be with 40 digits')
-            .matches(/^[0-9]+$/, 'iSBN Number does not match the requirement!'),
+            .matches(/^[0-9]+$/, 'iSBN Number does not match the requirement!')
+            .required("Please Enter ISBN number"),
         publishDate: yup.string()
             .matches(/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/, "Publish Date does not match the requirement!")
+            .required("Please Enter Publish date"),
     });
 
     const bookForm = useFormik({
@@ -160,13 +164,13 @@ function Book() {
             <Modal open={open} onClose={handleClose}>
                 <Box sx={style}>
                     <form onSubmit={bookForm.handleSubmit}>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Title" value={bookForm.values.title} variant="outlined" name='title' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} />
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Title" value={bookForm.values.title} variant="outlined" name='title' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} required/>
                         <Typography color="error">{bookForm.touched.title && bookForm.errors.title?bookForm.errors.title:""}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Author" value={bookForm.values.author} variant="outlined" name='author' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} />
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Author" value={bookForm.values.author} variant="outlined" name='author' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} required/>
                         <Typography color="error">{bookForm.touched.author && bookForm.errors.author?bookForm.errors.author:""}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="iSBN" value={bookForm.values.iSBN} variant="outlined" name='iSBN' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} />
+                        <TextField style={{ width: '350px', margin: "5px" }} label="iSBN" value={bookForm.values.iSBN} variant="outlined" name='iSBN' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} required/>
                         <Typography color="error">{bookForm.touched.iSBN && bookForm.errors.iSBN?bookForm.errors.iSBN:""}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Publish Date" value={bookForm.values.publishDate} variant="outlined" name='publishDate' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} />
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Publish Date" value={bookForm.values.publishDate} variant="outlined" name='publishDate' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} required/>
                         <Typography color="error">{bookForm.touched.publishDate && bookForm.errors.publishDate? bookForm.errors.publishDate : ""}</Typography>
                         <Button variant='contained' color="success" type='submit' style={{ width: "350px", margin: "5px" }}>
                             {editMode ? 'Update' : 'Submit'}
