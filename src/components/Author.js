@@ -14,57 +14,57 @@ import { useFormik } from 'formik';
 const authors = [
   {
       name: "Harper Lee",
-      dob: "1926-04-28",
+      dob: "28/04/1926",
       bio: "Harper Lee was an American author best known for her Pulitzer Prize-winning novel 'To Kill a Mockingbird' (1960), which addresses themes of racial injustice and moral growth in the American South."
   },
   {
       name: "George Orwell",
-      dob: "1903-06-25",
+      dob: "25/06/1903",
       bio: "George Orwell was an English novelist, essayist, and critic, famous for his works 'Animal Farm' (1945) and '1984' (1949), which critique totalitarianism and explore themes of surveillance and social injustice."
   },
   {
       name: "Jane Austen",
-      dob: "1775-12-16",
+      dob: "16/12/1775",
       bio: "Jane Austen was an English novelist known for her six major novels including 'Pride and Prejudice' (1813) and 'Sense and Sensibility' (1811), which explore themes of social class, marriage, and morality."
   },
   {
       name: "F. Scott Fitzgerald",
-      dob: "1896-09-24",
+      dob: "24/09/1896",
       bio: "F. Scott Fitzgerald was an American novelist celebrated for his portrayal of the Jazz Age in works like 'The Great Gatsby' (1925), which examines themes of wealth, class, and the American Dream."
   },
   {
       name: "J.K. Rowling",
-      dob: "1965-07-31",
+      dob: "31/07/1965",
       bio: "J.K. Rowling is a British author best known for the 'Harry Potter' series, which has achieved global success and acclaim for its imaginative storytelling and complex characters."
   },
   {
       name: "Gabriel García Márquez",
-      dob: "1927-03-06",
+      dob: "06/03/1927",
       bio: "Gabriel García Márquez was a Colombian novelist and Nobel Prize winner, renowned for his works 'One Hundred Years of Solitude' (1967) and 'Love in the Time of Cholera' (1985), key examples of magical realism."
   },
   {
       name: "Toni Morrison",
-      dob: "1931-02-18",
+      dob: "18/02/1931",
       bio: "Toni Morrison was an American novelist and Nobel laureate, known for her powerful narratives on African American experiences, including 'Beloved' (1987) and 'Song of Solomon' (1977)."
   },
   {
       name: "Mark Twain",
-      dob: "1835-11-30",
+      dob: "30/11/1835",
       bio: "Mark Twain, born Samuel Clemens, was an American writer and humorist famous for his novels 'The Adventures of Tom Sawyer' (1876) and 'Adventures of Huckleberry Finn' (1884), which offer critical perspectives on society and human nature."
   },
   {
       name: "Leo Tolstoy",
-      dob: "1828-09-09",
+      dob: "09/09/1828",
       bio: "Leo Tolstoy was a Russian novelist known for his epic novels 'War and Peace' (1869) and 'Anna Karenina' (1877), which delve into themes of history, morality, and the human condition."
   },
   {
       name: "J.D. Salinger",
-      dob: "1919-01-01",
+      dob: "01/01/1919",
       bio: "J.D. Salinger was an American writer best known for his novel 'The Catcher in the Rye' (1951), which explores teenage angst and alienation through the character Holden Caulfield."
   },
   {
       name: "Stephen King",
-      dob: "1947-09-21",
+      dob: "21/09/1947",
       bio: "Stephen King is an American author renowned for his extensive body of work in the horror genre, including bestsellers like 'Carrie' (1974) and 'The Shining' (1977), which have had a significant impact on modern horror literature."
   }
 ];
@@ -111,9 +111,9 @@ function Author() {
             .matches(/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/, "Date of Birth does not match the requirement!")
             .required("Please Enter DOB"),
         bio: yup.string()
-            .min(40, 'Name Should be above 40 Characters')
+            .min(20, 'Name Should be above 20 Characters')
             .max(250, 'Name Should be with 40 Characters')
-            .matches(/^[A-z ]+$/, 'Bio does not match the requirement!')
+            .matches(/^[0-9A-z,.!'() -]+$/, 'Bio does not match the requirement!')
             .required("Please Enter Biography"),
     });
 

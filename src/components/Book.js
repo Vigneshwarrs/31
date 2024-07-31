@@ -16,37 +16,37 @@ const books = [
       title: "To Kill a Mockingbird",
       author: "Harper Lee",
       iSBN: "978-0061120084",
-      publishDate: "1960-07-11"
+      publishDate: "11/07/1960"
   },
   {
       title: "1984",
       author: "George Orwell",
       iSBN: "978-0451524935",
-      publishDate: "1949-06-08"
+      publishDate: "08/06/1949"
   },
   {
       title: "Pride and Prejudice",
       author: "Jane Austen",
       iSBN: "978-1503290563",
-      publishDate: "1813-01-28"
+      publishDate: "28/01/1813"
   },
   {
       title: "The Great Gatsby",
       author: "F. Scott Fitzgerald",
       iSBN: "978-0743273565",
-      publishDate: "1925-04-10"
+      publishDate: "10/04/1925"
   },
   {
       title: "Harry Potter and the Sorcerer's Stone",
       author: "J.K. Rowling",
       iSBN: "978-0590353427",
-      publishDate: "1997-09-01"
+      publishDate: "01/09/1997"
   },
   {
       title: "One Hundred Years of Solitude",
       author: "Gabriel García Márquez",
       iSBN: "978-0060883287",
-      publishDate: "1967-06-05"
+      publishDate: "05/06/1967"
   },
   {
       title: "Beloved",
@@ -58,19 +58,19 @@ const books = [
       title: "The Adventures of Tom Sawyer",
       author: "Mark Twain",
       iSBN: "978-0486282514",
-      publishDate: "1876-04-01"
+      publishDate: "1876-04- 01/04/1876"
   },
   {
       title: "War and Peace",
       author: "Leo Tolstoy",
       iSBN: "978-1400079988",
-      publishDate: "1869-03-01"
+      publishDate: "01/03/1869"
   },
   {
       title: "The Catcher in the Rye",
       author: "J.D. Salinger",
       iSBN: "978-0316769488",
-      publishDate: "1951-07-16"
+      publishDate: "16/07/1951"
   }
 ];
 
@@ -116,12 +116,12 @@ function Book() {
         author: yup.string()
             .min(2, 'Name Should be above 2 Characters')
             .max(40, 'Name Should be with 40 Characters')
-            .matches(/^[A-z ]+$/, 'Author Name does not match the requirement!')
+            .matches(/^[A-z. ]+$/, 'Author Name does not match the requirement!')
             .required("Please Enter Author Name"),
         iSBN: yup.string()
             .min(5, 'iSBN number should be above 5 digits')
             .max(40, 'iSBN number should be with 40 digits')
-            .matches(/^[0-9]+$/, 'iSBN Number does not match the requirement!')
+            .matches(/^[0-9-]+$/, 'iSBN Number does not match the requirement!')
             .required("Please Enter ISBN number"),
         publishDate: yup.string()
             .matches(/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/, "Publish Date does not match the requirement!")
@@ -193,7 +193,7 @@ function Book() {
                                 </CardContent>
                                 <CardActions className='btn'>
                                     <Button size="medium" color='secondary' variant='contained' startIcon={<EditIcon />} onClick={() => handleOpen(index)}>Edit</Button>
-                                    <Button size="medium" color='error' variant='contained' startIcon={<DeleteIcon />} onClick={() => setBookList(bookList.filter((i) => i !== index))}>Delete</Button>
+                                    <Button size="medium" color='error' variant='contained' startIcon={<DeleteIcon />} onClick={() => setBookList(bookList.filter((_,i) => i !== index))}>Delete</Button>
                                 </CardActions>
                             </Card>
                         </Grid>
