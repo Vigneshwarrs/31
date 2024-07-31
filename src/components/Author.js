@@ -150,12 +150,12 @@ function Author() {
             <Modal open={open} onClose={handleClose}>
                 <Box sx={style}>
                     <form onSubmit={authorForm.handleSubmit}>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Name" value={authorForm.values.name} variant="outlined" name='name' onChange={authorForm.handleChange} />
-                        <Typography color="error">{authorForm.errors.name}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Date Of Birth" value={authorForm.values.dob} variant="outlined" name='dob' onChange={authorForm.handleChange} />
-                        <Typography color="error">{authorForm.errors.dob}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Biography" value={authorForm.values.bio} variant="outlined" name='bio' onChange={authorForm.handleChange} />
-                        <Typography color="error">{authorForm.errors.bio}</Typography>
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Name" value={authorForm.values.name} variant="outlined" name='name' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur}/>
+                        <Typography color="error">{authorForm.touched.name && authorForm.errors.name?authorForm.errors.name:""}</Typography>
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Date Of Birth" value={authorForm.values.dob} variant="outlined" name='dob' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur} />
+                        <Typography color="error">{authorForm.touched.dob && authorForm.errors.dob?authorForm.errors.dob:""}</Typography>
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Biography" value={authorForm.values.bio} variant="outlined" name='bio' onChange={authorForm.handleChange} onBlur={authorForm.handleBlur} />
+                        <Typography color="error">{authorForm.touched.bio && authorForm.errors.bio?authorForm.errors.bio:""}</Typography>
                         <Button variant='contained' type='submit' style={{ width: "350px", margin: "5px" }} color="success">
                             {editMode ? 'Update' : 'Submit'}
                         </Button>

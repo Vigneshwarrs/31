@@ -160,14 +160,14 @@ function Book() {
             <Modal open={open} onClose={handleClose}>
                 <Box sx={style}>
                     <form onSubmit={bookForm.handleSubmit}>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Title" value={bookForm.values.title} variant="outlined" name='title' onChange={bookForm.handleChange} />
-                        <Typography color="error">{bookForm.errors.title}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Author" value={bookForm.values.author} variant="outlined" name='author' onChange={bookForm.handleChange} />
-                        <Typography color="error">{bookForm.errors.author}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="iSBN" value={bookForm.values.iSBN} variant="outlined" name='iSBN' onChange={bookForm.handleChange} />
-                        <Typography color="error">{bookForm.errors.iSBN}</Typography>
-                        <TextField style={{ width: '350px', margin: "5px" }} label="Publish Date" value={bookForm.values.publishDate} variant="outlined" name='publishDate' onChange={bookForm.handleChange} />
-                        <Typography color="error">{bookForm.errors.publishDate}</Typography>
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Title" value={bookForm.values.title} variant="outlined" name='title' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} />
+                        <Typography color="error">{bookForm.touched.title && bookForm.errors.title?bookForm.errors.title:""}</Typography>
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Author" value={bookForm.values.author} variant="outlined" name='author' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} />
+                        <Typography color="error">{bookForm.touched.author && bookForm.errors.author?bookForm.errors.author:""}</Typography>
+                        <TextField style={{ width: '350px', margin: "5px" }} label="iSBN" value={bookForm.values.iSBN} variant="outlined" name='iSBN' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} />
+                        <Typography color="error">{bookForm.touched.iSBN && bookForm.errors.iSBN?bookForm.errors.iSBN:""}</Typography>
+                        <TextField style={{ width: '350px', margin: "5px" }} label="Publish Date" value={bookForm.values.publishDate} variant="outlined" name='publishDate' onChange={bookForm.handleChange} onBlur={bookForm.handleBlur} />
+                        <Typography color="error">{bookForm.touched.publishDate && bookForm.errors.publishDate? bookForm.errors.publishDate : ""}</Typography>
                         <Button variant='contained' color="success" type='submit' style={{ width: "350px", margin: "5px" }}>
                             {editMode ? 'Update' : 'Submit'}
                         </Button>
