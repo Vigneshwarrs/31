@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+import Home from './components/Home';
+import Author from './components/Author';
+import Book from './components/Book';
+import { AppBar, Toolbar, Button } from '@mui/material';
 
 function App() {
+  const navigate = useNavigate();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <AppBar position='static'>
+          <Toolbar>
+            <Button color='inherit' onClick={()=>navigate('/book')}>Manage Books</Button>
+            <Button color='inherit' onClick={()=>navigate('/author')}>Manage Author</Button>
+          </Toolbar>
+        </AppBar>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/author' element={<Author />} />
+        <Route path='/book' element={<Book />} />
+      </Routes>
     </div>
   );
 }
